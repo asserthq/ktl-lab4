@@ -11,8 +11,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.lab4.R
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var trueButton: Button
-    private lateinit var falseButton: Button
+    private lateinit var mTrueButton: Button
+    private lateinit var mFalseButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,17 +24,17 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        trueButton = findViewById(R.id.true_button)
-        falseButton = findViewById(R.id.false_button)
+        mTrueButton = findViewById(R.id.true_button)
+        mFalseButton = findViewById(R.id.false_button)
 
-        trueButton.setOnClickListener { _: View ->
+        mTrueButton.setOnClickListener { _: View ->
             Toast.makeText(
                 this,
                 R.string.correct_toast,
                 Toast.LENGTH_SHORT)
                 .show()
         }
-        falseButton.setOnClickListener { _: View ->
+        mFalseButton.setOnClickListener { _: View ->
             Toast.makeText(
                 this,
                 R.string.incorrect_toast,
