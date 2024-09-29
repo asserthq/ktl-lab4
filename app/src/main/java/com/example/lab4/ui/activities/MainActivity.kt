@@ -3,6 +3,7 @@ package com.example.lab4.ui.activities
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,10 @@ import com.example.lab4.R
 import com.example.lab4.models.Question
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var mQuestionTextView: TextView
     private lateinit var mTrueButton: Button
     private lateinit var mFalseButton: Button
+    private lateinit var mNextButton: Button
 
     private val mQuestionBank = listOf(
         Question(R.string.question_australia, true),
@@ -35,8 +38,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        mQuestionTextView = findViewById(R.id.question_text_view)
         mTrueButton = findViewById(R.id.true_button)
         mFalseButton = findViewById(R.id.false_button)
+        mNextButton = findViewById(R.id.next_button)
+
+        mQuestionTextView.setText(mQuestionBank[mCurrentIndex].textResId)
 
         mTrueButton.setOnClickListener { _: View ->
             Toast.makeText(
