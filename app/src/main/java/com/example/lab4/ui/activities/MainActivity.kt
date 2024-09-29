@@ -9,10 +9,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.lab4.R
+import com.example.lab4.models.Question
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mTrueButton: Button
     private lateinit var mFalseButton: Button
+
+    private val mQuestionBank = listOf(
+        Question(R.string.question_australia, true),
+        Question(R.string.question_oceans, true),
+        Question(R.string.question_mideast, false),
+        Question(R.string.question_africa, false),
+        Question(R.string.question_americas, true),
+        Question(R.string.question_asia, true)
+    )
+    private var mCurrentIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,15 +42,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(
                 this,
                 R.string.correct_toast,
-                Toast.LENGTH_SHORT)
-                .show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
         mFalseButton.setOnClickListener { _: View ->
             Toast.makeText(
                 this,
                 R.string.incorrect_toast,
-                Toast.LENGTH_SHORT)
-                .show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
