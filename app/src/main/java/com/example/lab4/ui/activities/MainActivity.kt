@@ -43,8 +43,6 @@ class MainActivity : AppCompatActivity() {
         mFalseButton = findViewById(R.id.false_button)
         mNextButton = findViewById(R.id.next_button)
 
-        mQuestionTextView.setText(mQuestionBank[mCurrentIndex].textResId)
-
         mTrueButton.setOnClickListener { _: View ->
             Toast.makeText(
                 this,
@@ -59,5 +57,14 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+        mNextButton.setOnClickListener { _: View ->
+            mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
+            updateQuestion()
+        }
+
+        updateQuestion()
     }
+
+    private fun updateQuestion() = mQuestionTextView.setText(mQuestionBank[mCurrentIndex].textResId)
+
 }
